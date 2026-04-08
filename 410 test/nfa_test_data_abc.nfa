@@ -1,0 +1,19 @@
+Start: q0
+Finals: q0 qA qB qC
+Alphabet: a b c
+States: q0 qA qB qC qT
+
+Transitions:
+q0 -> qA (a)
+q0 -> qB (b)
+q0 -> qC (c)
+qA -> qA (a)
+qA -> qC (c)
+qA -> qT (b)
+qB -> qA (a)
+qB -> qB (b)
+qB -> qT (c)
+qC -> qB (b)
+qC -> qC (c)
+qC -> qT (a)
+qT -> qT (a b c)
