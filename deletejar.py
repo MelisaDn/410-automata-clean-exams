@@ -8,8 +8,8 @@ def delete_files(root_folder):
         for file in files:
             file_path = os.path.join(root, file)
 
-            # Case 1: Delete normal .jar and .pdf files
-            if file.endswith((".jar", ".pdf")):
+            # Case 1: Delete normal .jar files
+            if file.endswith(".jar") or file.endswith(".pdf"):
                 try:
                     os.remove(file_path)
                     print(f"Deleted: {file_path}")
@@ -20,6 +20,7 @@ def delete_files(root_folder):
             elif file.endswith(".zip"):
                 try:
                     with zipfile.ZipFile(file_path, 'r') as zip_ref:
+                        jar_files = [f for f in zip_ref.namelist() if f.endswith('.jar') or f.endswith('.pdf')]
 
                         # Find .jar and .pdf files inside zip
                         unwanted_files = [
@@ -49,5 +50,5 @@ def delete_files(root_folder):
                     print(f"Error processing zip {file_path}: {e}")
 
 # Example usage:
-folder_path = "410 quiz5"
+folder_path = "410-quiz3"
 delete_files(folder_path)
